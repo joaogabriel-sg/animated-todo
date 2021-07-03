@@ -43,4 +43,8 @@ export const GlobalStyle = createGlobalStyle`
   h6 {
     font-weight: 500,
   }
+
+  button {
+    cursor: pointer;
+  }
 `;
