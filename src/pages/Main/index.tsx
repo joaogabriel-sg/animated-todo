@@ -1,4 +1,4 @@
-import { FiPlus } from 'react-icons/fi';
+import { AddTodoItem } from '../../components/AddTodoItem';
 
 import { Header } from '../../components/Header';
 import { TodoList } from '../../components/TodoList';
@@ -12,14 +12,7 @@ export function Main() {
 			<Container>
 				<div>
 					<h1>ToDos de João Gabriel</h1>
-
-					<div className="add-todo">
-						<input type="text" placeholder="Digite seu nome para entrar" />
-						<button type="button">
-							<FiPlus size={32} />
-						</button>
-					</div>
-
+					<AddTodoItem />
 					<TodoList />
 				</div>
 			</Container>
