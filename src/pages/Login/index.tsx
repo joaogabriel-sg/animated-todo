@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import logoImg from '../../assets/logo.svg';
 
-import { Container, Button } from './styles';
+import { Container } from './styles';
 
 export function Login() {
 	const [name, setName] = useState('');
@@ -23,7 +23,7 @@ export function Login() {
 					onChange={({ target }) => setName(target.value)}
 					placeholder="Digite seu nome para entrar"
 				/>
-				<Button to="/main">Entrar no to.DO</Button>
+				<button type="button">Entrar no to.DO</button>
 			</div>
 		</Container>
 	);

@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom';
 import { darken, lighten, opacify } from 'polished';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 type ContainerType = {
 	containerOpacity: number;
@@ -65,42 +64,35 @@ export const Container = styled.main<ContainerType>`
 				color: ${({ theme }) => theme.text};
 			}
 		}
+
+		button {
+			background: ${({ theme }) => theme.purple};
+			width: 100%;
+			max-width: 330px;
+			height: 42px;
+
+			display: grid;
+			place-items: center;
+
+			border: 0;
+			border-radius: 2px;
+			margin-top: 1rem;
+
+			font-size: 1rem;
+			font-weight: 500;
+			text-decoration: none;
+			color: ${({ theme }) => theme.light};
+
+			transition: background 0.3s;
+
+			&:disabled {
+				background: ${({ theme }) => lighten(0.15, theme.purple)};
+				cursor: not-allowed;
+			}
+
+			&:not(:disabled):hover {
+				background: ${({ theme }) => darken(0.05, theme.purple)};
+			}
+		}
 	}
-`;
-
-type ButtonType = {
-	disabled?: boolean;
-};
-
-export const Button = styled(Link)<ButtonType>`
-	background: ${({ theme }) => theme.purple};
-	width: 100%;
-	max-width: 330px;
-	height: 42px;
-
-	display: grid;
-	place-items: center;
-
-	border: 0;
-	border-radius: 2px;
-	margin-top: 1rem;
-
-	font-size: 1rem;
-	font-weight: 500;
-	text-decoration: none;
-	color: ${({ theme }) => theme.light};
-
-	transition: background 0.3s;
-
-	${({ disabled = false }) =>
-		disabled
-			? css`
-					background: ${({ theme }) => lighten(0.15, theme.purple)};
-					cursor: not-allowed;
-			  `
-			: css`
-					&:hover {
-						background: ${({ theme }) => darken(0.05, theme.purple)};
-					}
-			  `}
 `;
