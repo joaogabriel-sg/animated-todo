@@ -2,13 +2,20 @@ import { Link } from 'react-router-dom';
 import { darken, lighten, opacify } from 'polished';
 import styled, { css } from 'styled-components';
 
-export const Container = styled.main`
-	background: ${({ theme }) => opacify(-1, theme.purple)};
+type ContainerType = {
+	containerOpacity: number;
+};
+
+export const Container = styled.main<ContainerType>`
+	background: ${({ theme, containerOpacity }) =>
+		opacify(containerOpacity, theme.purple)};
 	min-height: 100vh;
 	padding: 1rem;
 
 	display: grid;
 	place-items: center;
+
+	transition: background 0.3s;
 
 	div {
 		background: ${({ theme }) => theme.light};
@@ -61,7 +68,9 @@ export const Container = styled.main`
 	}
 `;
 
-type ButtonType = { disabled?: boolean };
+type ButtonType = {
+	disabled?: boolean;
+};
 
 export const Button = styled(Link)<ButtonType>`
 	background: ${({ theme }) => theme.purple};
