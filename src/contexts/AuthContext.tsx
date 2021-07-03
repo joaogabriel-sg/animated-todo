@@ -1,4 +1,5 @@
 import { useState, createContext, PropsWithChildren } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 interface Todo {
@@ -23,6 +24,7 @@ interface AuthContextProps {
 export const AuthContext = createContext({} as AuthContextProps);
 
 export function AuthProvider({ children }: PropsWithChildren<unknown>) {
+	const navigate = useNavigate();
 	const [data, setData] = useState<Data>(() => {
 		let userDataInLocalStorage = localStorage.getItem('@AnimatedTodo:user');
 		if (userDataInLocalStorage) return JSON.parse(userDataInLocalStorage);
@@ -40,6 +42,7 @@ export function AuthProvider({ children }: PropsWithChildren<unknown>) {
 
 		setData(newData);
 		localStorage.setItem('@AnimatedTodo:user', JSON.stringify(newData));
+		navigate('main');
 	}
 
 	function signOut() {
