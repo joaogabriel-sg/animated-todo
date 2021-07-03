@@ -11,6 +11,7 @@ const lightTheme: DefaultTheme = {
 	light: '#FFFFFF',
 	purple: '#8A63D2',
 	red: '#D26363',
+	white: '#FFFFFF',
 };
 
 export function Themes({ children }: ThemeProps) {
