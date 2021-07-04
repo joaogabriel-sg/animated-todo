@@ -35,7 +35,7 @@ export function TodoProvider({ children }: PropsWithChildren<unknown>) {
 			const newTodoList = [...oldTodos, newTodoItem];
 
 			localStorage.setItem(
-				'AnimatedTodo:user',
+				'@AnimatedTodo:user',
 				JSON.stringify({ ...data, todos: newTodoList }),
 			);
 			return newTodoList;
