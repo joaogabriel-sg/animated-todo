@@ -23,7 +23,7 @@ export function AddTodoItem() {
 				type="text"
 				value={title}
 				onChange={({ target }) => setTitle(target.value)}
-				placeholder="Digite seu nome para entrar"
+				placeholder="Digite o título da ToDo"
 			/>
 			<button
 				type="button"
