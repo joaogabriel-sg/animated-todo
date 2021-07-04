@@ -6,14 +6,17 @@ import { AppRoutes } from './routes';
 
 import { Themes } from './styles/Themes';
 import { GlobalStyle } from './styles/global';
+import { TodoProvider } from './contexts/TodoContext';
 
 function App() {
 	return (
 		<Themes>
 			<BrowserRouter>
 				<AuthProvider>
-					<AppRoutes />
-					<GlobalStyle />
+					<TodoProvider>
+						<AppRoutes />
+						<GlobalStyle />
+					</TodoProvider>
 				</AuthProvider>
 			</BrowserRouter>
 		</Themes>
