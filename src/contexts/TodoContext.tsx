@@ -45,6 +45,10 @@ export function TodoProvider({ children }: PropsWithChildren<unknown>) {
 	function deleteTodoItem(id: string) {
 		setTodos((oldTodos) => {
 			const newTodoList = oldTodos.filter((oldTodo) => oldTodo.id !== id);
+			localStorage.setItem(
+				'@AnimatedTodo:user',
+				JSON.stringify({ ...data, todos: newTodoList }),
+			);
 			return newTodoList;
 		});
 	}
