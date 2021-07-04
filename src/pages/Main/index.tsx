@@ -1,6 +1,6 @@
-import { AddTodoItem } from '../../components/AddTodoItem';
-
 import { Header } from '../../components/Header';
+import { Title } from '../../components/Title';
+import { AddTodoItem } from '../../components/AddTodoItem';
 import { TodoList } from '../../components/TodoList';
 
 import { Container } from './styles';
@@ -11,7 +11,7 @@ export function Main() {
 			<Header />
 			<Container>
 				<div>
-					<h1>ToDos de João Gabriel</h1>
+					<Title />
 					<AddTodoItem />
 					<TodoList />
 				</div>
