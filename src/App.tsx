@@ -14,12 +14,12 @@ function App() {
 		<Themes>
 			<BrowserRouter>
 				<AuthProvider>
-					<TodoProvider>
-						<ModalProvider>
+					<ModalProvider>
+						<TodoProvider>
 							<AppRoutes />
 							<GlobalStyle />
-						</ModalProvider>
-					</TodoProvider>
+						</TodoProvider>
+					</ModalProvider>
 				</AuthProvider>
 			</BrowserRouter>
 		</Themes>
