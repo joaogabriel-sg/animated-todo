@@ -1,12 +1,13 @@
 import { BrowserRouter } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext';
+import { TodoProvider } from './contexts/TodoContext';
+import { ModalProvider } from './contexts/ModalContext';
 
 import { AppRoutes } from './routes';
 
 import { Themes } from './styles/Themes';
 import { GlobalStyle } from './styles/global';
-import { TodoProvider } from './contexts/TodoContext';
 
 function App() {
 	return (
@@ -14,8 +15,10 @@ function App() {
 			<BrowserRouter>
 				<AuthProvider>
 					<TodoProvider>
-						<AppRoutes />
-						<GlobalStyle />
+						<ModalProvider>
+							<AppRoutes />
+							<GlobalStyle />
+						</ModalProvider>
 					</TodoProvider>
 				</AuthProvider>
 			</BrowserRouter>
