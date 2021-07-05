@@ -5,7 +5,7 @@ import { useTodo } from '../../hooks/useTodo';
 import { Container } from './styles';
 
 export function TodoList() {
-	const { todos, deleteTodoItem } = useTodo();
+	const { todos, deleteTodoItem, openTodoItemInEditMode } = useTodo();
 
 	if (!todos || !todos.length) return null;
 
@@ -19,7 +19,7 @@ export function TodoList() {
 						</span>
 					</div>
 					<p>{todo.title}</p>
-					<FaEdit size={24} />
+					<FaEdit size={24} onClick={() => openTodoItemInEditMode(todo)} />
 					<FaTrashAlt size={24} onClick={() => deleteTodoItem(todo.id)} />
 				</div>
 			))}
