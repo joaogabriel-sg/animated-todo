@@ -1,4 +1,4 @@
-import { darken } from 'polished';
+import { darken, lighten } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.section`
@@ -7,6 +7,7 @@ export const Container = styled.section`
 	left: 0;
 	right: 0;
 	bottom: 0;
+	z-index: 9999;
 
 	background: rgba(0, 0, 0, 0.75);
 	width: 100%;
@@ -70,6 +71,11 @@ export const Container = styled.section`
 			&:focus {
 				border-color: ${({ theme }) => theme.purple};
 			}
+
+			&::placeholder {
+				font-weight: 400;
+				color: ${({ theme }) => theme.text};
+			}
 		}
 
 		div {
@@ -94,7 +100,12 @@ export const Container = styled.section`
 					background: ${({ theme }) => theme.green};
 					transition: background 0.3s;
 
-					&:hover {
+					&:disabled {
+						background: ${({ theme }) => lighten(0.15, theme.green)};
+						cursor: not-allowed;
+					}
+
+					&:not(:disabled):hover {
 						background: ${({ theme }) => darken(0.05, theme.green)};
 					}
 				}
