@@ -4,7 +4,7 @@ export const Container = styled.header`
 	background: ${({ theme }) => theme.purple};
 	padding: 0 1rem;
 
-	div {
+	> div {
 		width: 100%;
 		max-width: 940px;
 		height: 100px;
@@ -15,12 +15,18 @@ export const Container = styled.header`
 		align-items: center;
 		justify-content: space-between;
 
-		button {
-			background: transparent;
-			border: 0;
+		> div {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
 
-			svg {
-				fill: ${({ theme }) => theme.white};
+			> button {
+				background: transparent;
+				border: 0;
+
+				svg {
+					fill: ${({ theme }) => theme.white};
+				}
 			}
 		}
 	}
