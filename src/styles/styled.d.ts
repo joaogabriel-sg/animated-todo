@@ -2,6 +2,7 @@ import 'styled-components';
 
 declare module 'styled-components' {
 	export interface DefaultTheme {
+		name: string;
 		background: string;
 		text: string;
 		light: string;
