@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Container = styled.h1`
+export const Container = styled(motion.h1)`
 	margin-bottom: 1rem;
 
 	font-size: 2rem;
