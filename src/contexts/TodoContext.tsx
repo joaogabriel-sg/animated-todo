@@ -18,6 +18,7 @@ interface TodoContextProps {
 	editTodoItem: (todo: Todo) => void;
 	openTodoItemInEditMode: (todo: Todo) => void;
 	clearTodoList: () => void;
+	completeTodoItem: (id: string) => void;
 }
 
 export const TodoContext = createContext({} as TodoContextProps);
@@ -77,6 +78,21 @@ export function TodoProvider({ children }: PropsWithChildren<unknown>) {
 		closeModal();
 	}
 
+	function completeTodoItem(id: string) {
+		setTodos((oldTodos) => {
+			const newTodoList = oldTodos.map((oldTodo) => {
+				if (oldTodo.id === id)
+					return { ...oldTodo, isCompleted: !oldTodo.isCompleted };
+				return oldTodo;
+			});
+			localStorage.setItem(
+				'@AnimatedTodo:user',
+				JSON.stringify({ ...data, todos: newTodoList }),
+			);
+			return newTodoList;
+		});
+	}
+
 	function openTodoItemInEditMode(todo: Todo) {
 		openModal();
 		setTodoToEdit(todo);
@@ -96,6 +112,7 @@ export function TodoProvider({ children }: PropsWithChildren<unknown>) {
 				editTodoItem,
 				openTodoItemInEditMode,
 				clearTodoList,
+				completeTodoItem,
 			}}
 		>
 			{children}

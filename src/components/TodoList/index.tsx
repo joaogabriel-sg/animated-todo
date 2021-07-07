@@ -5,7 +5,8 @@ import { useTodo } from '../../hooks/useTodo';
 import { Container } from './styles';
 
 export function TodoList() {
-	const { todos, deleteTodoItem, openTodoItemInEditMode } = useTodo();
+	const { todos, deleteTodoItem, openTodoItemInEditMode, completeTodoItem } =
+		useTodo();
 
 	if (!todos || !todos.length) return null;
 
@@ -13,7 +14,10 @@ export function TodoList() {
 		<Container>
 			{todos.map((todo) => (
 				<div className="todo-item" key={todo.id}>
-					<div className={todo.isCompleted ? 'completed' : ''}>
+					<div
+						className={todo.isCompleted ? 'completed' : ''}
+						onClick={() => completeTodoItem(todo.id)}
+					>
 						<span>
 							<FaCheck size={16} />
 						</span>
