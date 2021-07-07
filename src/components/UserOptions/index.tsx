@@ -1,10 +1,31 @@
 import { useState, useEffect, useRef, MouseEvent } from 'react';
 import { IoExit } from 'react-icons/io5';
+import { motion } from 'framer-motion';
 
 import { useAuth } from '../../hooks/useAuth';
 import { useTodo } from '../../hooks/useTodo';
 
+import { buttonVariants } from '../Header';
+
 import { Container } from './styles';
+
+const navVariants = {
+	hidden: {
+		opacity: 0,
+		translateX: 32,
+		translateY: 5,
+		rotateZ: -15,
+	},
+	visible: {
+		opacity: 1,
+		translateX: 0,
+		translateY: 0,
+		rotateZ: 0,
+		transition: {
+			duration: 0.3,
+		},
+	},
+};
 
 export function UserOptions() {
 	const { data, signOut } = useAuth();
@@ -51,16 +72,25 @@ export function UserOptions() {
 
 	return (
 		<>
-			<Container ref={containerRef} onClick={handleToggleDropdown}>
+			<Container
+				variants={buttonVariants}
+				ref={containerRef}
+				onClick={handleToggleDropdown}
+			>
 				<span>{twoCharacters}</span>
 				{isVisible && (
-					<nav ref={dropdownRef}>
+					<motion.nav
+						variants={navVariants}
+						initial="hidden"
+						animate="visible"
+						ref={dropdownRef}
+					>
 						<ul>
 							<button type="button" onClick={handleSignOutUse}>
 								<IoExit size={24} /> Sair da Conta
 							</button>
 						</ul>
-					</nav>
+					</motion.nav>
 				)}
 			</Container>
 		</>

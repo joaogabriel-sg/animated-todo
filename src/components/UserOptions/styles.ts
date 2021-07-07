@@ -1,17 +1,7 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-const showNavAnimation = keyframes`
-  from {
-    opacity: 0;
-    top: 100%;
-  }
-  to {
-    opacity: 1;
-    top: calc(100% + 8px);
-  }
-`;
-
-export const Container = styled.div`
+export const Container = styled(motion.div)`
 	position: relative;
 	background: ${({ theme }) => theme.white};
 	width: 40px;
@@ -44,8 +34,6 @@ export const Container = styled.div`
 		top: calc(100% + 8px);
 		right: 0%;
 		z-index: 999;
-
-		animation: ${showNavAnimation} 0.6s ease;
 
 		&::before {
 			content: '';
