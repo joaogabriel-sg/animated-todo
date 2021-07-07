@@ -1,17 +1,25 @@
 import { useState, useEffect, useRef, MouseEvent } from 'react';
 import { IoExit } from 'react-icons/io5';
+
 import { useAuth } from '../../hooks/useAuth';
+import { useTodo } from '../../hooks/useTodo';
 
 import { Container } from './styles';
 
 export function UserOptions() {
 	const { data, signOut } = useAuth();
+	const { clearTodoList } = useTodo();
 	const [isVisible, setIsVisible] = useState(false);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const dropdownRef = useRef<HTMLElement>(null);
 
 	const { name } = data;
 	const twoCharacters = name.slice(0, 2).padStart(2, '0').toUpperCase();
+
+	function handleSignOutUse() {
+		clearTodoList();
+		signOut();
+	}
 
 	function handleToggleDropdown(event: MouseEvent) {
 		if (event.target === event.currentTarget)
@@ -48,7 +56,7 @@ export function UserOptions() {
 				{isVisible && (
 					<nav ref={dropdownRef}>
 						<ul>
-							<button type="button" onClick={() => signOut()}>
+							<button type="button" onClick={handleSignOutUse}>
 								<IoExit size={24} /> Sair da Conta
 							</button>
 						</ul>

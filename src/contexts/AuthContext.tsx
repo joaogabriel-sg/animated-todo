@@ -46,7 +46,8 @@ export function AuthProvider({ children }: PropsWithChildren<unknown>) {
 	}
 
 	function signOut() {
-		setData({} as Data);
+		setData({ id: '', name: '', isSigned: false, todos: [] });
+		localStorage.removeItem('@AnimatedTodo:user');
 	}
 
 	return (

@@ -17,6 +17,7 @@ interface TodoContextProps {
 	deleteTodoItem: (id: string) => void;
 	editTodoItem: (todo: Todo) => void;
 	openTodoItemInEditMode: (todo: Todo) => void;
+	clearTodoList: () => void;
 }
 
 export const TodoContext = createContext({} as TodoContextProps);
@@ -24,7 +25,7 @@ export const TodoContext = createContext({} as TodoContextProps);
 export function TodoProvider({ children }: PropsWithChildren<unknown>) {
 	const { data } = useAuth();
 	const { openModal, closeModal } = useModal();
-	const [todos, setTodos] = useState(data.todos);
+	const [todos, setTodos] = useState<Todo[]>([]);
 	const [todoToEdit, setTodoToEdit] = useState({} as Todo);
 
 	function addNewTodo(title: string) {
@@ -81,6 +82,10 @@ export function TodoProvider({ children }: PropsWithChildren<unknown>) {
 		setTodoToEdit(todo);
 	}
 
+	function clearTodoList() {
+		setTodos([]);
+	}
+
 	return (
 		<TodoContext.Provider
 			value={{
@@ -90,6 +95,7 @@ export function TodoProvider({ children }: PropsWithChildren<unknown>) {
 				deleteTodoItem,
 				editTodoItem,
 				openTodoItemInEditMode,
+				clearTodoList,
 			}}
 		>
 			{children}
