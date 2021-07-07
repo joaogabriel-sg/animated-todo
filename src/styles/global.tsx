@@ -25,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.background};
     -webkit-font-smoothing: antialiased !important;
+    transition: background 0.3s;
   }
 
   body,

@@ -24,7 +24,7 @@ export const Container = styled.section`
 		font-weight: 500;
 		color: ${({ theme }) => theme.purple};
 
-		transition: border-color 0.3s;
+		transition: border-color 0.3s, background 0.3s;
 
 		&:focus {
 			border-color: ${({ theme }) => theme.purple};
