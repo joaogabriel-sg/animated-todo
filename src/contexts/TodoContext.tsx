@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useAuth } from '../hooks/useAuth';
 import { useModal } from '../hooks/useModal';
 
+import { Data } from './AuthContext';
+
 interface Todo {
 	id: string;
 	title: string;
@@ -26,7 +28,14 @@ export const TodoContext = createContext({} as TodoContextProps);
 export function TodoProvider({ children }: PropsWithChildren<unknown>) {
 	const { data } = useAuth();
 	const { openModal, closeModal } = useModal();
-	const [todos, setTodos] = useState<Todo[]>([]);
+	const [todos, setTodos] = useState<Todo[]>(() => {
+		let userDataInLocalStorage = localStorage.getItem('@AnimatedTodo:user');
+		if (userDataInLocalStorage) {
+			const userData: Data = JSON.parse(userDataInLocalStorage);
+			return userData.todos;
+		}
+		return [];
+	});
 	const [todoToEdit, setTodoToEdit] = useState({} as Todo);
 
 	function addNewTodo(title: string) {
