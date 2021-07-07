@@ -1,20 +1,13 @@
 import { ReactNode } from 'react';
-import { DefaultTheme, ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+
+import { useTheme } from '../hooks/useTheme';
 
 interface ThemeProps {
 	children: ReactNode;
 }
 
-const lightTheme: DefaultTheme = {
-	background: '#ECF0F1',
-	text: '#AFAFAF',
-	light: '#FFFFFF',
-	purple: '#8A63D2',
-	red: '#D26363',
-	green: '#63D28F',
-	white: '#FFFFFF',
-};
-
 export function Themes({ children }: ThemeProps) {
-	return <ThemeProvider theme={lightTheme}>{children}</ThemeProvider>;
+	const { theme } = useTheme();
+	return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
