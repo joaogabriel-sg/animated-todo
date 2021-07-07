@@ -8,7 +8,7 @@ interface Todo {
 	isCompleted: boolean;
 }
 
-interface Data {
+export interface Data {
 	id: string;
 	name: string;
 	todos: Todo[];
