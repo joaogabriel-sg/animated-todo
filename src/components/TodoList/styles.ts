@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Container = styled.section`
+export const Container = styled(motion.section)`
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
