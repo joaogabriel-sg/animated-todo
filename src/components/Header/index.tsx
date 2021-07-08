@@ -9,6 +9,22 @@ import { UserOptions } from '../UserOptions';
 
 import { Container } from './styles';
 
+const headerVariants = {
+	hidden: {
+		y: '-100vh',
+	},
+	visible: {
+		y: 0,
+		transition: {
+			duration: 0.6,
+			type: 'spring',
+			when: 'beforeChildren',
+			bounce: 0,
+			staggerChildren: 0.4,
+		},
+	},
+};
+
 const logoVariants = {
 	hidden: {
 		y: '-100vh',
@@ -33,7 +49,7 @@ const buttonsContainerVariants = {
 			duration: 0.5,
 			type: 'spring',
 			stiffness: 40,
-			delayChildren: 1.3,
+			delayChildren: 0.6,
 			staggerChildren: 0.3,
 			staggerDirection: -1,
 		},
@@ -57,20 +73,10 @@ export function Header() {
 	}
 
 	return (
-		<Container>
+		<Container variants={headerVariants} initial="hidden" animate="visible">
 			<div>
-				<motion.img
-					variants={logoVariants}
-					initial="hidden"
-					animate="visible"
-					src={logoWhiteImg}
-					alt="to.DO"
-				/>
-				<motion.div
-					variants={buttonsContainerVariants}
-					initial="hidden"
-					animate="visible"
-				>
+				<motion.img variants={logoVariants} src={logoWhiteImg} alt="to.DO" />
+				<motion.div variants={buttonsContainerVariants}>
 					<motion.button
 						variants={buttonVariants}
 						type="button"

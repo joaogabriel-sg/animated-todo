@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Container = styled.header`
+export const Container = styled(motion.header)`
 	background: ${({ theme }) => theme.purple};
 	padding: 0 1rem;
 
