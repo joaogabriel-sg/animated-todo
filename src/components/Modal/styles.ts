@@ -1,7 +1,8 @@
 import { darken, lighten } from 'polished';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Container = styled.section`
+export const Container = styled(motion.section)`
 	position: fixed;
 	top: 0;
 	left: 0;
