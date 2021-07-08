@@ -12,7 +12,7 @@ export const Container = styled(motion.section)`
 
 	background: rgba(0, 0, 0, 0.75);
 	width: 100%;
-	height: 100%;
+	min-height: 100vh;
 
 	display: grid;
 	place-items: center;
